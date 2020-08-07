@@ -1,10 +1,21 @@
+
+
 def intersection(arrays):
     """
     YOUR CODE HERE
     """
-    # Your code here
 
-    return result
+    nums = {}
+
+    for array in arrays:
+        for val in array:
+
+            if val not in nums:
+                nums[val] = 1
+            else:
+                nums[val] += 1
+
+    return [key for key, value in nums.items() if value == len(arrays)]
 
 
 if __name__ == "__main__":
