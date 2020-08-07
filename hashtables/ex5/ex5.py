@@ -6,6 +6,7 @@ def finder(files, queries):
     YOUR CODE HERE
     """
     file_paths = {}
+    search_results = []
     result = []
 
     for path in files:
@@ -13,11 +14,17 @@ def finder(files, queries):
         key = temp[-1]
 
         if key not in file_paths:
-            file_paths[key] = path
+            file_paths[key] = [path]
+        else:
+            file_paths[key].append(path)
 
     for query in queries:
         if query in file_paths:
-            result.append(file_paths[query])
+            search_results.append(file_paths[query])
+
+    for i in range(len(search_results)):
+        for j in range(len(search_results[i])):
+            result.append(search_results[i][j])
 
     return result
 
